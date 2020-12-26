@@ -5,8 +5,11 @@
     </head>
 
     <body onload="startPage()">
-        <h1>Turn 1</h1>
+        <h1 id="turn_num"></h1>
+        <div id="current_combatant"></div>
         <div id="combat_order"></div>
+        <button onclick="nextTurn()">Continue</button>
+        <button onclick="endFight()">End Fight</button>
     </body>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
