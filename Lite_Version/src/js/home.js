@@ -7,6 +7,13 @@ function submitPage() {
         let HP = $(`#HP${i}`).val();
         let AC = $(`#AC${i}`).val();
         let init = $(`#init${i}`).val();
+       
+        if (name == "" || name == null || HP == null || HP == "" || AC == null || AC == "" || init == null || init == "") {
+            combatants = [];
+            alert("Please fill in every field");
+            return;
+        }
+
         combatants.push({name: name, HP: HP, AC: AC, init: init});
     }
 
@@ -16,6 +23,8 @@ function submitPage() {
 }
 
 function addCombatants() {
+    $("#numPlayerBar").css("display", "none");
+    $("#tableDiv").css("visibility", "visible")
     num_combatants = $("#num_combatants").val();
     $("#combatant_table").append('<table id="combat_table"><tr><th>Name</th><th>HP</th><th>AC</th><th>Initiative</th></tr>');
     for (let i = 0; i < num_combatants; ++i) {

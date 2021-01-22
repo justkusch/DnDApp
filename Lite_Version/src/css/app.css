@@ -1,0 +1,49 @@
+body {
+    text-align: center;
+    background-color: beige;
+}
+
+.mainPage {
+    border: solid;
+    border-color: black;
+    border-radius: 5px;
+    background-color: maroon;
+    padding: 2%;
+    color: rgb(49, 190, 255);
+}
+
+
+.horRow {
+    white-space: nowrap;
+}
+
+.mainPage {
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 5%;
+}
+
+.hori {
+    display: inline-block;
+}
+
+h1 {
+    height: 5%;
+    width: 50%;
+}
+
+#current_combatant {
+    margin-bottom: 2%;
+}
+
+#combat_order {
+    text-align: left;
+}
+
+#endBtn {
+    margin: 2%;
+    background-color: red;
+    height: 5%;
+    width: 10%;
+    color: white;
+}

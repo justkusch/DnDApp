@@ -6,15 +6,17 @@
     </head>
 
     <body>
-        <h1>Welcome to Dice & Damage!</h1>
-        <p>This page will get you started, just enter the number of combatants, their basic stats, and get playing</p>
+        <h1 class="mainPage">Welcome to Dice & Damage!</h1>
+        <div class="mainPage">
+            <p>This page will get you started, just enter the number of combatants, their basic stats, and get playing</p>
 
-        <p>How many combatants are there? </p>
-        <input type="number" min=2 id="num_combatants"/>
-        <button onclick="addCombatants()">Confirm</button>
-        <div id="combatant_table"></div>
-        <button onclick="submitPage()">Start</button>
+            <div id="numPlayerBar">How many combatants are there?  <input type="number" min=2 id="num_combatants"/> <button onclick="addCombatants()">Confirm</button></div>
+        </div>
 
+        <div id="tableDiv" class="mainPage">
+            <div id="combatant_table"></div>
+            <button id="startBtn" onclick="submitPage()">Start</button>
+        </div>
     </body>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

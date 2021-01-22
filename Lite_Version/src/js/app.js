@@ -8,9 +8,9 @@ function startPage() {
     combatants = JSON.parse(window.localStorage.getItem('combatants'));
     num_combatants = window.localStorage.getItem('num_combatants');
     combatants = combatants.sort(function(com1, com2) {
-        if (com1.init > com2.init) {
+        if (parseInt(com1.init) > parseInt(com2.init)) {
             return -1;
-        } else if (com1.init < com2.init) {
+        } else if (parseInt(com1.init) < parseInt(com2.init)) {
             return 1;
         } else {
             return 0;
@@ -18,16 +18,21 @@ function startPage() {
     });
 
     for(let i = 0; i < num_combatants; ++i) {
-        $("#combat_order").append(`<div id="combat${i}"><p><strong>${combatants[i].name}\tInitiative: </strong>${combatants[i].init}</p></div>`);
+        $("#combat_order").append(`<div id="combat${i}"><p><strong>${combatants[i].name}</strong> &nbsp;&nbsp HP:<span id="hp${i}">${combatants[i].HP}</span><strong>\tInitiative: </strong>${combatants[i].init}</p></div>`);
     }
 
-    $("#combat0").css("color", "red");
+    $("#combat0").css("color", "rgb(36, 109, 143)");
 
-    $("#current_combatant").html(`<strong>${combatants[0].name}</strong><br/><strong>HP: </strong>${combatants[0].HP}<br/><strong>AC: </strong>${combatants[0].AC}`);
+    $("#current_combatant").html(`<strong>${combatants[0].name}</strong><br/><strong>HP: </strong><input type="number" id="currentHP" value=${combatants[0].HP} /><br/><strong>AC: </strong>${combatants[0].AC}`);
+}
+
+function applyDamage() {
+    combatants[current_combatant].HP = $("#currentHP").val();
+    $(`#hp${current_combatant}`).html($("#currentHP").val());
 }
 
 function nextTurn() {
-    $(`#combat${current_combatant}`).css("color", "black");
+    $(`#combat${current_combatant}`).css("color", "rgb(49, 190, 255)");
 
     current_combatant++;
     if (current_combatant >= num_combatants) {
@@ -36,8 +41,8 @@ function nextTurn() {
         $('#turn_num').html(`Turn ${turn_counter}`);
     }
 
-    $(`#combat${current_combatant}`).css("color", "red");
-    $("#current_combatant").html(`<strong>${combatants[current_combatant].name}</strong><br/><strong>HP: </strong>${combatants[current_combatant].HP}<br/><strong>AC: </strong>${combatants[current_combatant].AC}`);
+    $(`#combat${current_combatant}`).css("color", "rgb(36, 109, 143)");
+    $("#current_combatant").html(`<strong>${combatants[current_combatant].name}</strong><br/><strong>HP: </strong><input type="number" id="currentHP" value=${combatants[current_combatant].HP} /><br/><strong>AC: </strong>${combatants[current_combatant].AC}`);
 }
 
 function endFight() {
